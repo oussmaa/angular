@@ -1,0 +1,307 @@
+
+  <app-navprivate></app-navprivate>
+
+
+
+<div class="mar pad ">
+  <div class="card-body px-lg-4 py-lg-4">
+       
+    <form role="form" [formGroup]="profileForm"  >
+      <div class="form-group mb-3">
+        <div class="input-group input-group-merge input-group-alternative">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="ni ni-single-02 text-blue"></i></span>
+          </div>
+        
+          <input class="form-control text-blue" formControlName="Name" placeholder="Name" type="text">
+        </div>
+        <small  *ngIf="profileForm.get('Name').invalid && profileForm.get('Name').touched" class="text-danger">Name is Required</small>
+
+      </div>
+      <div class="form-group mb-3">
+        <div class="input-group input-group-merge input-group-alternative">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="ni ni-email-83 text-blue"></i></span>
+          </div>
+          <input class="form-control text-blue" formControlName="Email" placeholder="Email" type="email">
+        </div>
+        <small  *ngIf="profileForm.get('Email').invalid && profileForm.get('Email').touched" class="text-danger">Email is Required</small>
+
+      </div>
+      <div class="form-group mb-3">
+        <div class="input-group input-group-merge input-group-alternative">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="ni ni-mobile-button text-blue"></i></span>
+          </div>
+          <input class="form-control text-blue" formControlName="Phone" placeholder="Phone" type="tel">
+        </div>
+        <small  *ngIf="profileForm.get('Phone').invalid && profileForm.get('Phone').touched" class="text-danger">Phone is Required</small>
+
+      </div>
+      <div class="form-group">
+        <div class="input-group input-group-merge input-group-alternative">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="ni ni-lock-circle-open text-blue"></i></span>
+          </div>
+          <input class="form-control text-blue" formControlName="password"placeholder="Password" type="password">
+        </div>
+        <small  *ngIf="profileForm.get('password').invalid && profileForm.get('password').touched" class="text-danger">Password to be 8 lenght and uppercase and lowercase and number and special caracter</small>
+
+      </div>
+      <select class="form-control form-control-sm">
+        <option>Small select1</option>
+        <option>Small select2</option>
+
+        <option>Small select3</option>
+
+      </select>
+    
+      <div class="text-center">
+        <button type="submit" [disabled]="profileForm.invalid" class="btn btn-primary my-4">Add Employes</button>
+      </div>
+      
+    </form>
+  </div>
+   
+        <div class="card">
+            <!-- Card header -->
+            <div class="card-header border-0">
+              <div class="row">
+                <div class="col-6">
+                  <h3 class="mb-0">List des Employes</h3>
+                </div>
+                <div id="datatable-buttons_filter" class="dataTables_filter"><label> <input      class="form-control form-control-sm" placeholder="Seach By Name" aria-controls="datatable-buttons"></label></div>
+    
+              </div>
+            </div>
+            <!-- Light table -->
+        
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Photo Employes</th>
+                    <th>  Username</th>
+                    <th>email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Delete Employes</th>
+                    <th>Edit Employes</th>
+    
+    
+                  </tr>
+                </thead>            <tbody>
+    
+                  <tr  >
+                    <td class="table-user">
+                     <img   class="avatar rounded-circle mr-3">
+                    </td>
+                    <td>
+                      <span class="text-bold">  </span>
+                    </td>
+                    <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                      <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                    <td>
+                        <span class="text-bold">  </span>
+    
+                    </td>
+                    <td><button type="button"   class="btn btn-danger">DELETE</button></td>
+                    <td><button type="button"   class="btn btn-info">UPDATE</button></td>
+
+                  </tr>        <tr  >
+                    <td class="table-user">
+                     <img   class="avatar rounded-circle mr-3">
+                    </td>
+                    <td>
+                      <span class="text-bold">  </span>
+                    </td>
+                    <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                      <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                    <td>
+                        <span class="text-bold">  </span>
+    
+                    </td>
+                    <td><button type="button"   class="btn btn-danger">DELETE</button></td>
+                    <td><button type="button"   class="btn btn-info">UPDATE</button></td>
+
+                  </tr>        <tr  >
+                    <td class="table-user">
+                     <img   class="avatar rounded-circle mr-3">
+                    </td>
+                    <td>
+                      <span class="text-bold">  </span>
+                    </td>
+                    <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                      <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                    <td>
+                        <span class="text-bold">  </span>
+    
+                    </td>
+                    <td><button type="button"   class="btn btn-danger">DELETE</button></td>
+                    <td><button type="button"   class="btn btn-info">UPDATE</button></td>
+
+                  </tr>        <tr  >
+                    <td class="table-user">
+                     <img   class="avatar rounded-circle mr-3">
+                    </td>
+                    <td>
+                      <span class="text-bold">  </span>
+                    </td>
+                    <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                      <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                    <td>
+                        <span class="text-bold">  </span>
+    
+                    </td>
+                    <td><button type="button"   class="btn btn-danger">DELETE</button></td>
+                    <td><button type="button"   class="btn btn-info">UPDATE</button></td>
+
+                  </tr>        <tr  >
+                    <td class="table-user">
+                     <img   class="avatar rounded-circle mr-3">
+                    </td>
+                    <td>
+                      <span class="text-bold">  </span>
+                    </td>
+                    <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                      <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                    <td>
+                        <span class="text-bold">  </span>
+    
+                    </td>
+                    <td><button type="button"   class="btn btn-danger">DELETE</button></td>
+                    <td><button type="button"   class="btn btn-info">UPDATE</button></td>
+
+                  </tr>        <tr  >
+                    <td class="table-user">
+                     <img   class="avatar rounded-circle mr-3">
+                    </td>
+                    <td>
+                      <span class="text-bold">  </span>
+                    </td>
+                    <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                      <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                    <td>
+                        <span class="text-bold">  </span>
+    
+                    </td>
+                    <td><button type="button"   class="btn btn-danger">DELETE</button></td>
+                    <td><button type="button"   class="btn btn-info">UPDATE</button></td>
+
+                  </tr>        <tr  >
+                    <td class="table-user">
+                     <img   class="avatar rounded-circle mr-3">
+                    </td>
+                    <td>
+                      <span class="text-bold">  </span>
+                    </td>
+                    <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                      <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                    <td>
+                        <span class="text-bold">  </span>
+    
+                    </td>
+                    <td><button type="button"   class="btn btn-danger">DELETE</button></td>
+                    <td><button type="button"   class="btn btn-info">UPDATE</button></td>
+
+                  </tr>        <tr  >
+                    <td class="table-user">
+                     <img   class="avatar rounded-circle mr-3">
+                    </td>
+                    <td>
+                      <span class="text-bold">  </span>
+                    </td>
+                    <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                      <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                    <td>
+                        <span class="text-bold">  </span>
+    
+                    </td>
+                    <td><button type="button"   class="btn btn-danger">DELETE</button></td>
+                    <td><button type="button"   class="btn btn-info">UPDATE</button></td>
+
+                  </tr>        <tr  >
+                    <td class="table-user">
+                     <img   class="avatar rounded-circle mr-3">
+                    </td>
+                    <td>
+                      <span class="text-bold">  </span>
+                    </td>
+                    <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                      <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                    <td>
+                        <span class="text-bold">  </span>
+    
+                    </td>
+                    <td><button type="button"   class="btn btn-danger">DELETE</button></td>
+                    <td><button type="button"   class="btn btn-info">UPDATE</button></td>
+
+                  </tr>        <tr  >
+                    <td class="table-user">
+                     <img   class="avatar rounded-circle mr-3">
+                    </td>
+                    <td>
+                      <span class="text-bold">  </span>
+                    </td>
+                    <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                      <td>
+                        <span class="text-bold">   </span>
+                      </td>
+                    <td>
+                        <span class="text-bold">  </span>
+    
+                    </td>
+                    <td><button type="button"   class="btn btn-danger">DELETE</button></td>
+                    <td><button type="button"   class="btn btn-info">UPDATE</button></td>
+
+                  </tr>  
+                       
+                  
+                  
+                  <tbody>
+          
+                   
+                </tbody>
+              </table>
+            </div>
+          </div>
+    </div>
+ 
