@@ -6,6 +6,7 @@ import { MailingComponent } from './mailing/mailing.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationComponent } from './notification/notification.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SendmailComponent } from './sendmail/sendmail.component';
 import { SmsComponent } from './sms/sms.component';
 
 const routes: Routes = [
@@ -43,6 +44,11 @@ const routes: Routes = [
   {
     path:'sms',
     component:SmsComponent   
+    
+  },
+  {
+    path:'sendmail',
+    component:SendmailComponent   
     
   },
   {

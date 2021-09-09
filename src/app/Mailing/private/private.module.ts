@@ -12,6 +12,10 @@ import { SmsComponent } from './sms/sms.component';
 import { NavprivateComponent } from './navprivate/navprivate.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { SendmailComponent } from './sendmail/sendmail.component';
+import { HttpClientModule } from '@angular/common/http';
+ 
    @NgModule({
   declarations: [
     DashboredComponent,
@@ -22,12 +26,16 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     NotificationComponent,
     ProfileComponent,
     NavprivateComponent,
+    SendmailComponent,
      
   ],
   imports: [
     CommonModule,
     PrivateRoutingModule,
-    FormsModule,ReactiveFormsModule,AngularEditorModule  
+    FormsModule,ReactiveFormsModule,AngularEditorModule  ,NgxChartsModule,
+    HttpClientModule
+      
+
   ]
 })
 export class PrivateModule { }

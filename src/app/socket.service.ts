@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Sms } from './Sms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Message } from './Mailing/shared/Model/Message';
+import { id } from '@swimlane/ngx-charts';
 
 declare var SockJS: any;
 declare var Stomp: any;
@@ -8,27 +10,30 @@ declare var Stomp: any;
   providedIn: 'root'
 })
 export class SocketService {
-  public stompClient: any;
-  public sms:Sms[] = [];
-  httpOptions =
-  {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/Json',
-      
-    })
-  }
-  constructor() { 
-     
+   // Store the chat messages
+   public messages:Message[] = [];
+
+ 
+   public stompClient:any;
+  
+   httpOptions =
+   {
+     headers: new HttpHeaders({
+       'Content-Type': 'application/Json',
+       
+     })
+   }
+  constructor(private httpClient: HttpClient) {
+ 
     this.initializeWebSocketConnection();
   }
-
 
 
   initializeWebSocketConnection() {
     /**
      * Create a SockJS server with created back-end endpoint called /chat-websocket and added it over Stomp.
      */
-    const serverUrl = 'http://localhost:8065/gs-guide-websocket';
+    const serverUrl = 'http://localhost:8065/chat-websocket';
     const ws = new SockJS(serverUrl);
     this.stompClient = Stomp.over(ws);
      const that = this;
@@ -36,26 +41,38 @@ export class SocketService {
      * Connect stomp client and subscribe asynchronously to the chat message-handling Controller endpoint and push any message body into the messages array
      */
     this.stompClient.connect({}, function(_frame: any) {
-      that.stompClient.subscribe('/topic/sms',
-        (       _sms: any) => {
-        if (_sms.body) {
-          let obj = JSON.parse(_sms.body);
+      that.stompClient.subscribe('/chat/messages', (message: { body: string; }) => {
+        if (message.body) {
+          let obj = JSON.parse(message.body);
   
-     that.addMessage(obj.to, obj.message);
+     that.addMessage(obj.id, obj.name, obj.description,obj.subject,obj.date,obj.email,obj.time,obj.file);
    
         }
       });
     });
   }
-  addMessage(to: string, message: string) {
-    this.sms.push( {
-        to: to,
-        message: message,
-       
+
+
+
+  sendMessage(msg: Message) {
+    this.stompClient.send('/app/sendmsg/'+msg.id, {}, JSON.stringify(msg));
+ }
+  getmessage()
+  {
+    return this.messages;
+  }
+   addMessage(id: number, name: string, description: string,subject:string,date:string,email:string,time:string,file:string) {
+    this.messages.push( {
+         id:id,
+        name: name,
+        description: description,
+        subject:subject,
+        date:date,
+        email:email,
+       time:time,
+       file:file
     }
      );
   }
-  sendMessage(msg: Sms) {
-    this.stompClient.send('/app/sms/'+msg.to, {}, JSON.stringify(msg));
- }
 }
+ 

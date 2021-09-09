@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NotfoundComponent } from './Mailing/shared/Components/notfound/notfound.component';
 import { LoggerInterceptor } from './Mailing/shared/Guards/logger.interceptor';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
  
 @NgModule({
   declarations: [
@@ -25,6 +26,10 @@ import { LoggerInterceptor } from './Mailing/shared/Guards/logger.interceptor';
     FormsModule,
     BrowserAnimationsModule,  
     ToastrModule.forRoot(),
+    NgxChartsModule,
+     BrowserAnimationsModule
+ 
+   
     
      
   ],
