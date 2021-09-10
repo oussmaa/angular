@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ForgetpasswordComponent } from './Auth/forgetpassword/forgetpassword.component';
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 
 const routes: Routes = [
 
@@ -25,6 +26,11 @@ const routes: Routes = [
 {
   path:'forgetpassword',
   component:ForgetpasswordComponent   
+  
+},
+{
+  path:'confirememail/:id',
+  component:ConfirmEmailComponent   
   
 },
  

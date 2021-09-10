@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+ import { ToastrService } from 'ngx-toastr';
 import { AuthentificationService } from 'src/app/Mailing/shared/Service/authentification.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
 
   errorMessage2 = '';
-
+  isLoginError = false;
 
   profileForm!: FormGroup;
   pwdPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}";
@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
         'password': new FormControl(null,[Validators.required,Validators.required]),
    
     });
+    this.isLoginError = false;
+
   }
   onSubmit()
   {
@@ -37,13 +39,26 @@ export class LoginComponent implements OnInit {
     this.ser.login(this.profileForm.value.Email,this.profileForm.value.password).subscribe(
       
       res =>{
+        if(res.verife==true)
+        {
       this.ser.saveToken(res.accessToken);
+     localStorage.setItem('user_id',res.id);
+      const role =  res.roles;
+
+      if (role === 'Client') {
+        this.router.navigate(['/dashbored'], {relativeTo: this.route});
+      } else if (role === 'Admin') {
+        this.router.navigate(['/dashboard']);
+      } else if (role === 'Employer') {
+        this.router.navigate(['/dashbored']);
+      }
       this.toastr.success("Welcom");
-        
+    }
       },err=>   
            { this.errorMessage = err.error.message;
           this.errorMessage2="Please Verifier Password or Email";
           this.toastr.error( this.errorMessage2);
+          this.isLoginError = true;
 
           
           

@@ -31,7 +31,7 @@ export class AuthentificationService {
       password,
       numero,
       image:'',
-      roles:'Etudiant',
+      roles:'Client',
       verife:false
     }, this.httpOptions);
     
@@ -39,7 +39,7 @@ export class AuthentificationService {
   login(email: string, password: string) {  
 
     return this.httpClient.post<any>("http://localhost:8065/api/auth/signin",
-     {email,password} );
+     {email,password},this.httpOptions );
  
   }
   saveToken(token:any)
@@ -58,5 +58,12 @@ localStorage.removeItem("accessToken")
  }
 getToken() {
   return localStorage.getItem('accessToken');
+}
+
+udateUserVerife(id:string): Observable<any> {
+  return this.httpClient.put("http://localhost:8065/api/auth/updateverife/"+id, 
+  
+   this.httpOptions);
+  
 }
 }
