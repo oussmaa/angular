@@ -45,6 +45,7 @@ export class SendmailComponent implements OnInit {
       date:this.profileForm.value.Date,
       email:this.profileForm.value.Email,
       time:this.profileForm.value.Time,
+      sendTo:this.profileForm.value.Email,
       file:this.profileForm.value.File,
     };
 
@@ -54,7 +55,7 @@ export class SendmailComponent implements OnInit {
     this.router.navigate(['/dashbored/mailing'], {relativeTo: this.route});
 
    this.ser.SendMaill(this.profileForm.value.Name,this.profileForm.value.Description,this.profileForm.value.Objet,
-    this.profileForm.value.Date,this.profileForm.value.Email,this.profileForm.value.Time,this.profileForm.value.File).subscribe(
+    this.profileForm.value.Date,this.profileForm.value.Email,this.profileForm.value.Time,this.profileForm.value.Email,this.profileForm.value.File).subscribe(
       data => {
      
    

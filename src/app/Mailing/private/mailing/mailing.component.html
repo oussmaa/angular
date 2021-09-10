@@ -9,14 +9,8 @@
       <div id="datatable-basic_wrapper" class="dataTables_wrapper dt-bootstrap4">
         <div class="row">
           <div class="col-sm-12 col-md-6">
-            <div class="dataTables_length" id="datatable-basic_length">
-              <label>Show <select name="datatable-basic_length" aria-controls="datatable-basic" class="form-control form-control-sm">
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select> entries</label>
-            </div>
+            <button type="button" routerLink="/dashbored/emailsends" class="btn mar btn-primary btn-sm">Message Send</button>
+
           </div>
           <div class="col-sm-12 col-md-6">
             <div id="datatable-basic_filter" class="dataTables_filter">
@@ -46,10 +40,10 @@
           
           
           
-        <tr role="row"     *ngFor="let message of  messages1" class="odd">
+        <tr role="row"   [routerLink]="['/dashbored/emaildetaille',message.id]"   *ngFor="let message of  messages1" class="odd">
             <td  >{{message.email}}</td>
             <td>{{message.subject}}</td>
-            <td>{{message.date}}</td>
+            <td>{{message.date  | date:'yyyy-MM-dd'}}</td>
             <td>{{message.time}}</td>
             <td>{{message.name}}</td>
             <td>{{message.file}}</td>

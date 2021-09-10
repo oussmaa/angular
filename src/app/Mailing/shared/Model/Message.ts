@@ -3,9 +3,10 @@ export interface Message {
     name?: string;
     description?: string;
     subject?: string;
-    date?:String;
+    date?:Date;
     email?:string;
     time?:string;
+    sendTo?:string;
     file?:string ;
   
   }

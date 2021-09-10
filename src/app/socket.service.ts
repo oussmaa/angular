@@ -45,7 +45,7 @@ export class SocketService {
         if (message.body) {
           let obj = JSON.parse(message.body);
   
-     that.addMessage(obj.id, obj.name, obj.description,obj.subject,obj.date,obj.email,obj.time,obj.file);
+     that.addMessage(obj.id, obj.name, obj.description,obj.subject,obj.date,obj.email,obj.time,obj.sendTo,obj.file);
    
         }
       });
@@ -55,13 +55,13 @@ export class SocketService {
 
 
   sendMessage(msg: Message) {
-    this.stompClient.send('/app/sendmsg/'+msg.id, {}, JSON.stringify(msg));
+    this.stompClient.send('/app/sendmsg/'+msg.email, {}, JSON.stringify(msg));
  }
   getmessage()
   {
     return this.messages;
   }
-   addMessage(id: number, name: string, description: string,subject:string,date:string,email:string,time:string,file:string) {
+   addMessage(id: number, name: string, description: string,subject:string,date:Date,email:string,time:string,sendTo:string,file:string) {
     this.messages.push( {
          id:id,
         name: name,
@@ -70,6 +70,7 @@ export class SocketService {
         date:date,
         email:email,
        time:time,
+       sendTo:sendTo,
        file:file
     }
      );

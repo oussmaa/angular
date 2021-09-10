@@ -15,6 +15,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { SendmailComponent } from './sendmail/sendmail.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MessageSendeComponent } from './message-sende/message-sende.component';
+import { EmailDetailleComponent } from './email-detaille/email-detaille.component';
  
    @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     NavprivateComponent,
     SendmailComponent,
+    MessageSendeComponent,
+    EmailDetailleComponent,
      
   ],
   imports: [
